@@ -16,7 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from frontend.views import visual_index, visual_opciones, visual_carga
+from django.conf import settings
+from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
+    path('', visual_index),
     path('admin/', admin.site.urls),
+    path('principal/', visual_index),
+    path('cargarxml/', views.procesar_xml, name='procesar-xml'),
+    path('peticiones/', visual_opciones),
+    path('carga/', visual_carga),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

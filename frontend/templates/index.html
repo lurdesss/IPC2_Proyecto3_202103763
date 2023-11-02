@@ -1,10 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>menu</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #1a1f20;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 470px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1f20;
+        }
+        .menu {
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 10%;
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+        }
+        .menu-header {
+            background-color: black;
+            color: #fff;
+            padding: 20px 0px 10px 0px;
+        }
+        .menu-buttons {
+            background-color: #000;
+            padding: 20px 10px 0px 10px;
+        }
+        .rounded-button {
+            display: block;
+            margin-left: 30px;
+            margin-right: 30px;
+            padding: 7px 10px;
+            border-radius: 50px;
+            text-decoration: none !important;
+            color: white;
+            background-color: transparent;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .menu-button {
+            background-color: white;
+            color: #4c5257;
+            border: none;
+        }
+        .pt-button{
+            border: 1px #536471 solid;
+        }
+        .pt-button:hover{
+            background-color: #181919 !important;
+            color: white !important;
+        }
+        .rounded-button:hover {
+            background-color: white;
+            color: black;
+        }
+        .menu-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu-list li:last-child {
+            border-bottom: none;
+        }
+        .menu-list a {
+            display: block;
+            text-decoration: none;
+            color: gainsboro;
+            padding: 20px;
+        }
+        .menu-list a:hover {
+            background-color: #000;
+        }
+        .on-top{
+            font-size: 1.5em;
+        }
+        .fas{
+            margin-right: 7px;
+        }
+
+        /* media queries */
+        @media (max-width: 600px) {
+            .menu {
+                margin-top: 7%;
+            }
+        }
+        @media (max-width: 550px) {
+            .menu {
+                margin-top: 5%;
+            }
+        }
+        @media (max-width: 500px) {
+            .menu {
+                margin-top: 2%;
+            }
+        }
+    </style>
 </head>
 <body>
-$END$
+    <div class="container">
+        <div class="menu">
+            <div class="menu-header">
+                <div class="on-top">Tecnologías Chapinas S. A.</div>
+            </div>
+            <div class="menu-buttons">
+                <a class="rounded-button menu-button" href="#" onclick="document.getElementById('entradaarchivo').click();">
+                    <i class="fas fa-file-upload"></i>Cargar XML de mensajes</a>
+                <form id="uploadForm" action="{% url 'procesar-xml' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="xml_file" id="entradaarchivo" style="display: none;">
+                </form>
+            </div>
+            <div class="menu-buttons">
+                <a class="rounded-button menu-button" href="#">
+                    <i class="fas fa-file-upload"></i>Cargar XML de configuración</a>
+            </div>
+            <div class="menu-buttons">
+                <a class="rounded-button pt-button" href="#">Peticiones</a>
+            </div>
+            <div>
+                <ul class="menu-list">
+                    <li><a href="#">¿Resetear datos?</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Agregar Bootstrap (asegúrate de incluir la referencia adecuada) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
